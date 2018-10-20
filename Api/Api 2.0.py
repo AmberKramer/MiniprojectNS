@@ -1,16 +1,14 @@
 import requests
 import xmltodict
 
-
 def treintijden(): #vraagt alle informatie op vanuit de API
-    station = input("Geef de stationsnaaam op:")
+    station = input("Geef de stationsnaam op:")
     auth_details = ('amber.kramer@student.hu.nl', 'vKHIYFtiDBbycMlRcAUsdstrme5Bo4iL76YTBJivyKkio-XWM6QiQA')
     api_url = ('http://webservices.ns.nl/ns-api-avt?station='+station)
     response = requests.get(api_url, auth=auth_details)
     with open('vertrektijden.xml', 'w') as myXMLFile:
         myXMLFile.write(response.text)
 treintijden()
-
 
 def processXML(filename):
     with open(filename) as myXMLFile:
@@ -26,22 +24,18 @@ def Tijd():
         if vertrektijd['VertrekTijd'] is not None:
             print(vertrektijd['VertrekTijd'])
 
-
 def Bestemming():
     stationdict = processXML('vertrektijden.xml')
     vertrektijden = stationdict['ActueleVertrekTijden']['VertrekkendeTrein']
     for vertrektijd in vertrektijden:
-        if vertrektijd['EindBestemming'] is not None:
-            if vertrektijd['VertrekTijd'] is not None:
-                if vertrektijd['VertrekSpoor'] is not None:
-                    tijd = (vertrektijd['VertrekTijd'])
-                    info = tijd.split('T')
-                    info2 = info[1].split('+')
-                    #Spoor = vertrektijd['VertrekSpoor']
-                    #print(Spoor)
-                    Bestemming = vertrektijd['EindBestemming']
-                    print("De trein naar {} vertrekt om {}".format(Bestemming,(info2[0])[0:5]))
-                    #print("De trein naar", vertrektijd['EindBestemming'], "vertrekt om", info2[0])
+        if vertrektijd['EindBestemming'] is not None and vertrektijd['VertrekTijd'] is not None and vertrektijd['TreinSoort'] is not None and vertrektijd['VertrekSpoor'] is not None:
+            tijd = (vertrektijd['VertrekTijd'])
+            info = tijd.split('T')
+            info2 = info[1].split('+')
+            # Spoor = vertrektijd['VertrekSpoor']
+            # print(Spoor)
+            print("De {} naar {} vertrekt om {}".format(vertrektijd['TreinSoort'], vertrektijd['EindBestemming'],(info2[0])[0:5]))
+            # print("De trein naar", vertrektijd['EindBestemming'], "vertrekt om", info2[0])
 
 
 Bestemming()

@@ -1,6 +1,7 @@
 import requests
 import xmltodict
 
+
 def treintijden(): #vraagt alle informatie op vanuit de API
     station = input("Geef de stationsnaaam op:")
     auth_details = ('amber.kramer@student.hu.nl', 'vKHIYFtiDBbycMlRcAUsdstrme5Bo4iL76YTBJivyKkio-XWM6QiQA')
@@ -10,14 +11,12 @@ def treintijden(): #vraagt alle informatie op vanuit de API
         myXMLFile.write(response.text)
 treintijden()
 
+
 def processXML(filename):
     with open(filename) as myXMLFile:
         filestring= myXMLFile.read()
         xmldictionary= xmltodict.parse(filestring)
         return xmldictionary
-
-
-
 
 
 def Tijd():
@@ -26,6 +25,7 @@ def Tijd():
     for vertrektijd in vertrektijden:
         if vertrektijd['VertrekTijd'] is not None:
             print(vertrektijd['VertrekTijd'])
+
 
 def Bestemming():
     stationdict = processXML('vertrektijden.xml')
@@ -40,11 +40,8 @@ def Bestemming():
                     #Spoor = vertrektijd['VertrekSpoor']
                     #print(Spoor)
                     Bestemming = vertrektijd['EindBestemming']
-                    print("De trein naar {} vertrekt om {:5}".format(Bestemming,(info2[0])[0:5]))
+                    print("De trein naar {} vertrekt om {}".format(Bestemming,(info2[0])[0:5]))
                     #print("De trein naar", vertrektijd['EindBestemming'], "vertrekt om", info2[0])
-
-
-
 
 
 Bestemming()

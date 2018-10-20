@@ -39,7 +39,7 @@ def Bestemming():
                     #Spoor = vertrektijd['VertrekSpoor']
                     #print(Spoor)
                     Bestemming = vertrektijd['EindBestemming']
-                    print("De trein naar {} vertrekt om {:.5f}".format(Bestemming,info2[0]))
+                    print("De trein naar {} vertrekt om {:5}".format(Bestemming,(info2[0])[0:5]))
                     #print("De trein naar", vertrektijd['EindBestemming'], "vertrekt om", info2[0])
 
 

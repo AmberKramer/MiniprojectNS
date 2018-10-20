@@ -32,10 +32,16 @@ def Bestemming():
     for vertrektijd in vertrektijden:
         if vertrektijd['EindBestemming'] is not None:
             if vertrektijd['VertrekTijd'] is not None:
-                tijd=(vertrektijd['VertrekTijd'])
-                info = tijd.split('T')
-                info2 = info[1].split('+')
-                print ("De trein naar",vertrektijd['EindBestemming'],"vertrekt om",info2[0])
+                if vertrektijd['VertrekSpoor'] is not None:
+                    tijd = (vertrektijd['VertrekTijd'])
+                    info = tijd.split('T')
+                    info2 = info[1].split('+')
+                    #Spoor = vertrektijd['VertrekSpoor']
+                    #print(Spoor)
+                    Bestemming = vertrektijd['EindBestemming']
+                    print("De trein naar {} vertrekt om {:.5f}".format(Bestemming,info2[0]))
+                    #print("De trein naar", vertrektijd['EindBestemming'], "vertrekt om", info2[0])
+
 
 
 

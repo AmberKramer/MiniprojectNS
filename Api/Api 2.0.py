@@ -2,12 +2,12 @@ import requests
 import xmltodict
 
 def treintijden(): #vraagt alle informatie op vanuit de API
-    station = input("Geef de stationsnaam op:")
-    auth_details = ('amber.kramer@student.hu.nl', 'vKHIYFtiDBbycMlRcAUsdstrme5Bo4iL76YTBJivyKkio-XWM6QiQA')
-    api_url = ('http://webservices.ns.nl/ns-api-avt?station='+station)
-    response = requests.get(api_url, auth=auth_details)
-    with open('vertrektijden.xml', 'w') as myXMLFile:
-        myXMLFile.write(response.text)
+        station = input("Geef de stationsnaam op:")
+        auth_details = ('amber.kramer@student.hu.nl', 'vKHIYFtiDBbycMlRcAUsdstrme5Bo4iL76YTBJivyKkio-XWM6QiQA')
+        api_url = ('http://webservices.ns.nl/ns-api-avt?station='+station)
+        response = requests.get(api_url, auth=auth_details)
+        with open('vertrektijden.xml', 'w') as myXMLFile:
+            myXMLFile.write(response.text)
 treintijden()
 
 def processXML(filename):
@@ -16,34 +16,50 @@ def processXML(filename):
         xmldictionary= xmltodict.parse(filestring)
         return xmldictionary
 
-def Tijd():
-    stationdict = processXML('vertrektijden.xml')
+
+def Tijd(vertrektijd):
+    if vertrektijd['VertrekTijd'] is not None:
+        test=vertrektijd['VertrekTijd']
+        tijd = test.split('T')
+        TijdNet = tijd[1].split('+')
+    return TijdNet
+
+def Plaats(vertrektijd):
+    if vertrektijd['EindBestemming'] is not None:
+        Bestemming=vertrektijd['EindBestemming']
+    return Bestemming
+
+def Spoor(vertrektijd):
+    if vertrektijd['VertrekSpoor'] is not None:
+        try:
+            Spoor=(vertrektijd['VertrekSpoor'])['#text']
+        except KeyError:
+            Spoor="X"
+    return Spoor
+
+def Trein(vertrektijd):
+    if vertrektijd['TreinSoort'] is not None:
+        Trein=vertrektijd['TreinSoort']
+    return Trein
+
+def Vertraging(vertrektijd):
+    stationdict= processXML('vertrektijden.xml')
     vertrektijden = stationdict['ActueleVertrekTijden']['VertrekkendeTrein']
-    for vertrektijd in vertrektijden:
+    try:
         if vertrektijd['VertrekTijd'] is not None:
-            print(vertrektijd['VertrekTijd'])
+            vertraging= " " + vertrektijd['VertrekVertragingTekst']
+    except KeyError:
+        vertraging= ""
+    return vertraging
 
 def Bestemming():
-    stationdict = processXML('vertrektijden.xml')
-    vertrektijden = stationdict['ActueleVertrekTijden']['VertrekkendeTrein']
-    for vertrektijd in vertrektijden:
-        if vertrektijd['EindBestemming'] is not None and vertrektijd['VertrekTijd'] is not None and vertrektijd['TreinSoort'] is not None and vertrektijd['VertrekSpoor'] is not None:
-            tijd = (vertrektijd['VertrekTijd'])
-            info = tijd.split('T')
-            info2 = info[1].split('+')
-            Spoor = vertrektijd['VertrekSpoor']
-            #print(Spoor)
-            print("De {} naar {} vertrekt om {}".format(vertrektijd['TreinSoort'], vertrektijd['EindBestemming'],(info2[0])[0:5]))
-            # print("De trein naar", vertrektijd['EindBestemming'], "vertrekt om", info2[0])
-
+    try:
+        stationdict = processXML('vertrektijden.xml')
+        vertrektijden = stationdict['ActueleVertrekTijden']['VertrekkendeTrein']
+        for vertrektijd in vertrektijden:
+            EindText=("De {} naar {} vertrekt om {}{} vanaf spoor {}".format(Trein(vertrektijd),Plaats(vertrektijd),((Tijd(vertrektijd))[0])[0:5],Vertraging(vertrektijd),Spoor(vertrektijd)))
+            print(EindText)
+    except KeyError:
+        print("Geef een Geldige stations naam!")
 
 Bestemming()
-#processXML('vertrektijden.xml')
-
-
-#infile = open('vertrektijden.xml', 'r')
-#info= infile.readlines()
-#treintijden()
-#for regels in info:
-#    tekst= regels.strip()
-#    print(tekst)

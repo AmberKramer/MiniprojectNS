@@ -16,7 +16,6 @@ def processXML(filename):
         xmldictionary= xmltodict.parse(filestring)
         return xmldictionary
 
-
 def Tijd():
     stationdict = processXML('vertrektijden.xml')
     vertrektijden = stationdict['ActueleVertrekTijden']['VertrekkendeTrein']
@@ -32,8 +31,8 @@ def Bestemming():
             tijd = (vertrektijd['VertrekTijd'])
             info = tijd.split('T')
             info2 = info[1].split('+')
-            # Spoor = vertrektijd['VertrekSpoor']
-            # print(Spoor)
+            Spoor = vertrektijd['VertrekSpoor']
+            #print(Spoor)
             print("De {} naar {} vertrekt om {}".format(vertrektijd['TreinSoort'], vertrektijd['EindBestemming'],(info2[0])[0:5]))
             # print("De trein naar", vertrektijd['EindBestemming'], "vertrekt om", info2[0])
 

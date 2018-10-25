@@ -8,6 +8,7 @@ def treintijden(): #vraagt alle informatie op vanuit de API
     response = requests.get(api_url, auth=auth_details)
     with open('vertrektijden.xml', 'w') as myXMLFile:
         myXMLFile.write(response.text)
+    return
 treintijden()
 def processXML(filename):
     with open(filename) as myXMLFile:
@@ -25,6 +26,7 @@ def vertrektijd():
     for vertrektijd in vertrektijden:
         if vertrektijd['VertrekTijd'] is not None:
             print(vertrektijd['VertrekTijd'])
+    return
 
 
 

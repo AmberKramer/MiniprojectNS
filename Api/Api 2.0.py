@@ -43,23 +43,29 @@ def Trein(vertrektijd):
     return Trein
 
 def Vertraging(vertrektijd):
-    stationdict= processXML('vertrektijden.xml')
-    vertrektijden = stationdict['ActueleVertrekTijden']['VertrekkendeTrein']
-    try:
-        if vertrektijd['VertrekTijd'] is not None:
-            vertraging= " " + vertrektijd['VertrekVertragingTekst']
-    except KeyError:
-        vertraging= ""
-    return vertraging
+    if vertrektijd['VertrekTijd'] is not None:
+        try:
+            Vertraging= " "+vertrektijd['VertrekVertragingTekst']
+        except KeyError:
+            Vertraging= ""
+    return Vertraging
+
+def Wijziging(vertrektijd):
+        if vertrektijd is not None:
+            try:
+                Wijziging="Let op: "+vertrektijd['Opmerkingen']['Opmerking']
+            except KeyError:
+                Wijziging = ""
+        return Wijziging
 
 def Bestemming():
     try:
         stationdict = processXML('vertrektijden.xml')
         vertrektijden = stationdict['ActueleVertrekTijden']['VertrekkendeTrein']
         for vertrektijd in vertrektijden:
-            EindText=("De {} naar {} vertrekt om {}{} vanaf spoor {}".format(Trein(vertrektijd),Plaats(vertrektijd),((Tijd(vertrektijd))[0])[0:5],Vertraging(vertrektijd),Spoor(vertrektijd)))
+            EindText=("De {} naar {} vertrekt om {}{} vanaf spoor {} {}".format(Trein(vertrektijd),Plaats(vertrektijd),((Tijd(vertrektijd))[0])[0:5],Vertraging(vertrektijd),Spoor(vertrektijd),Wijziging(vertrektijd)))
             print(EindText)
     except KeyError:
-        print("Geef een Geldige stations naam!")
+        print("Geef een geldige stations naam")
 
 Bestemming()

@@ -17,43 +17,43 @@ def processXML(filename):
         return xmldictionary
 
 
-def Tijd(vertrektijd):
-    if vertrektijd['VertrekTijd'] is not None:
-        test=vertrektijd['VertrekTijd']
-        tijd = test.split('T')
-        TijdNet = tijd[1].split('+')
+def Tijd(info):
+    if info['VertrekTijd'] is not None:
+        tijd1=info['VertrekTijd']
+        tijd2 = tijd1.split('T')
+        TijdNet = tijd2[1].split('+')
     return TijdNet
 
-def Plaats(vertrektijd):
-    if vertrektijd['EindBestemming'] is not None:
-        Bestemming=vertrektijd['EindBestemming']
+def Plaats(info):
+    if info['EindBestemming'] is not None:
+        Bestemming=info['EindBestemming']
     return Bestemming
 
-def Spoor(vertrektijd):
-    if vertrektijd['VertrekSpoor'] is not None:
+def Spoor(info):
+    if info['VertrekSpoor'] is not None:
         try:
-            Spoor=(vertrektijd['VertrekSpoor'])['#text']
+            Spoor=(info['VertrekSpoor'])['#text']
         except KeyError:
-            Spoor="X"
+            Spoor="'Onbekend'"
     return Spoor
 
-def Trein(vertrektijd):
-    if vertrektijd['TreinSoort'] is not None:
-        Trein=vertrektijd['TreinSoort']
+def Trein(info):
+    if info['TreinSoort'] is not None:
+        Trein=info['TreinSoort']
     return Trein
 
-def Vertraging(vertrektijd):
-    if vertrektijd['VertrekTijd'] is not None:
+def Vertraging(info):
+    if info['VertrekTijd'] is not None:
         try:
-            Vertraging= " "+vertrektijd['VertrekVertragingTekst']
+            Vertraging= " "+info['VertrekVertragingTekst']
         except KeyError:
             Vertraging= ""
     return Vertraging
 
-def Wijziging(vertrektijd):
-        if vertrektijd is not None:
+def Wijziging(info):
+        if info is not None:
             try:
-                Wijziging="Let op: "+vertrektijd['Opmerkingen']['Opmerking']
+                Wijziging="Let op!: "+info['Opmerkingen']['Opmerking']
             except KeyError:
                 Wijziging = ""
         return Wijziging
@@ -61,9 +61,9 @@ def Wijziging(vertrektijd):
 def Bestemming():
     try:
         stationdict = processXML('vertrektijden.xml')
-        vertrektijden = stationdict['ActueleVertrekTijden']['VertrekkendeTrein']
-        for vertrektijd in vertrektijden:
-            EindText=("De {} naar {} vertrekt om {}{} vanaf spoor {} {}".format(Trein(vertrektijd),Plaats(vertrektijd),((Tijd(vertrektijd))[0])[0:5],Vertraging(vertrektijd),Spoor(vertrektijd),Wijziging(vertrektijd)))
+        informatie = stationdict['ActueleVertrekTijden']['VertrekkendeTrein']
+        for info in informatie:
+            EindText=("De {} naar {} vertrekt om {}{} vanaf spoor {} {}".format(Trein(info),Plaats(info),((Tijd(info))[0])[0:5],Vertraging(info),Spoor(info),Wijziging(info)))
             print(EindText)
     except KeyError:
         print("Geef een geldige stations naam")

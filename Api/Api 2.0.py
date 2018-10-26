@@ -33,7 +33,7 @@ def Bestemming(info):
 def Spoor(info):
     try:
         Spoor=(info['VertrekSpoor'])['#text']
-   except KeyError: 
+    except KeyError: 
         Spoor="'Onbekend'"
     return Spoor
 
@@ -56,7 +56,7 @@ def Wijziging(info):
         Wijziging="Let op!: "+info['Opmerkingen']['Opmerking']
     except KeyError:
         Wijziging = ""
-        return Wijziging
+    return Wijziging
 
 def ActueleVertrekInformatie():
     try:

@@ -106,7 +106,6 @@ def ActueleVertrekInformatie():
             #EindText+="Dit is een test versie! Let op!: Dit is alleen maar een testq"
         global regel
         regel = EindText.split('q')
-
         eindoutput(regel)
 
         return True

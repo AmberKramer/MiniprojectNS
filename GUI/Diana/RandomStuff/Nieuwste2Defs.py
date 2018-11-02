@@ -44,7 +44,7 @@ def Bestemming(info):
 def Spoor(info):
     """Dit is
     om meerdere docstrings
-    te testen met
+    te testen met een doctest hieronder
     >>> Spoor({'VertrekSpoor' : {'#text' : 'Utrecht'}})
     'Utrecht'
     """
@@ -90,18 +90,14 @@ def ActueleVertrekInformatie():
     for Tabel in Tabellen:
         Tabel.destroy()
     try:
-        counting = 0
         EindText = ""
         stationdict = processXML('vertrektijden.xml')
         informatie = stationdict['ActueleVertrekTijden']['VertrekkendeTrein']
         for info in informatie:
-            counting += 1
-            if counting > 0:
-
-                EindText += ("De {} naar {} \nvertrekt om {}{} vanaf spoor {} {}".format(Trein(info), Bestemming(info),
-                                                                                  ((Tijd(info))[0])[0:5],
-                                                                                  Vertraging(info), Spoor(info),
-                                                                                  Wijziging(info))+'\nq')
+            EindText += ("De {} naar {} \nvertrekt om {}{} vanaf spoor {} {}".format(Trein(info), Bestemming(info),
+                                                                                     ((Tijd(info))[0])[0:5],
+                                                                                     Vertraging(info), Spoor(info),
+                                                                                     Wijziging(info))+'\nq')
 
             #EindText+="Dit is een test versie! Let op!: Dit is alleen maar een testq"
         global regel
@@ -118,7 +114,6 @@ def eindoutput(regel):
     posy = 260
 
     for r in regel:
-
         Tabel = Label(Root, text=r, justify=LEFT, anchor='nw', width=35, height=2)
         if "Let op" in r:
             splitting = r.split('Let op!:')
@@ -135,10 +130,10 @@ def eindoutput(regel):
         if aantal == 10:
             posx = 530
             posy = 260
-        if aantal == 20:
+        elif aantal == 20:
             posx = 810
             posy = 260
-        if aantal == 30:
+        elif aantal == 30:
             break
 
 

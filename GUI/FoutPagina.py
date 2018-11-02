@@ -12,7 +12,6 @@ def nederlands():
     Root.destroy()
 
 
-help(nederlands)
 NS_logo = "https://orig00.deviantart.net/0517/f/2018/306/1/e/nslogo_by_xxdragonsartxx-dcr03n1.png"
 NS_picture = PhotoImage(data=urlopen(NS_logo).read())
 blue = Label(Root, bg="#003082", height=3)

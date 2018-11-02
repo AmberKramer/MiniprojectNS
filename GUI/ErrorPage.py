@@ -7,12 +7,11 @@ Root["background"] = "#ffc917"
 
 
 def errorpage():
-    """deze def stuurt de gebruiker naar de engelse foutpagina"""
+    """deze def stuurt de gebruiker van de engelse foutpagina naar het engelse hoofdmenu"""
     os.system("py NS_project.py")
     Root.destroy()
 
 
-help(errorpage)
 NS_logo = "https://orig00.deviantart.net/0517/f/2018/306/1/e/nslogo_by_xxdragonsartxx-dcr03n1.png"
 NS_picture = PhotoImage(data=urlopen(NS_logo).read())
 blue = Label(Root, bg="#003082", height=3)

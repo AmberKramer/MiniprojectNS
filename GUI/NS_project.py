@@ -12,15 +12,9 @@ def pin_url():
     webbrowser.open_new(r"https://www.pin.nl/consument/historie-pinnen/")
 
 
-help(pin_url)
-
-
 def maestro_url():
     """verwijst naar de website van www.maestro.nl"""
     webbrowser.open_new(r"https://www.mastercard.nl/nl-nl/consumers/find-card-products/debit-cards.html")
-
-
-help(maestro_url)
 
 
 def startmenu():
@@ -29,16 +23,10 @@ def startmenu():
     Root.destroy()
 
 
-help(startmenu)
-
-
 def stationtab_uk():
     """met deze def wordt de gebruiker door gestuurd naar het scherm om een station te zoeken"""
     os.system('py NS_StationTabUK.py')
     Root.destroy()
-
-
-help(stationtab_uk)
 
 
 def nl():
@@ -48,9 +36,6 @@ def nl():
     Root.destroy()
 
 
-help(nl)
-
-
 def errorpage():
     """met deze def wordt de gebruiker door gestuurd
     naar de error pagina voor delen die nog niet functioneel zijn"""
@@ -58,7 +43,6 @@ def errorpage():
     Root.destroy()
 
 
-help(errorpage)
 NL = "https://orig00.deviantart.net/ebb8/f/2018/306/8/f/nlflag_by_xxdragonsartxx-dcr03na.gif"
 NL_picture = PhotoImage(data=urlopen(NL).read())
 UK = "https://orig00.deviantart.net/3403/f/2018/306/b/1/ukflag_by_xxdragonsartxx-dcr03mm.png"
@@ -111,7 +95,7 @@ Maestro.place(x=1170, y=300)
 Pinnen.bind("<Button-1>")
 Maestro.bind("<Button-1>")
 
-NLlabel = Label(Root, text="Netherlands", bg="#003082", fg="white", borderwidth=0, font=("", 8, "bold"))
+NLlabel = Label(Root, text="Nederlands", bg="#003082", fg="white", borderwidth=0, font=("", 8, "bold"))
 NLlabel.place(x=11, y=751)
 UKlabel = Label(Root, text="English", bg="#003082", fg="white", borderwidth=0, font=("", 8, "bold"))
 UKlabel.place(x=103, y=751)

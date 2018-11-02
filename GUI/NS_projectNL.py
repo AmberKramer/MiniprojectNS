@@ -12,15 +12,9 @@ def pin_url():
     webbrowser.open_new(r"https://www.pin.nl/consument/historie-pinnen/")
 
 
-help(pin_url)
-
-
 def maestro_url():
     """verwijst naar de website van www.maestro.nl"""
     webbrowser.open_new(r"https://www.mastercard.nl/nl-nl/consumers/find-card-products/debit-cards.html")
-
-
-help(maestro_url)
 
 
 def startmenu():
@@ -29,16 +23,10 @@ def startmenu():
     Root.destroy()
 
 
-help(startmenu)
-
-
 def stationtab():
     """met deze def wordt de gebruiker door gestuurd naar het scherm om een station te zoeken"""
     os.system('py NS_StationTab.py')
     Root.destroy()
-
-
-help(stationtab)
 
 
 def english():
@@ -47,17 +35,12 @@ def english():
     Root.destroy()
 
 
-help(english)
-
-
 def foutpagina():
     """met deze def wordt de gebruiker door gestuurd naar de
     fout pagina voor delen die nog niet functioneel zijn"""
     os.system("py FoutPagina.py")
     Root.destroy()
 
-
-help(foutpagina)
 
 NL = "https://orig00.deviantart.net/ebb8/f/2018/306/8/f/nlflag_by_xxdragonsartxx-dcr03na.gif"
 NL_picture = PhotoImage(data=urlopen(NL).read())

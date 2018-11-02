@@ -3,6 +3,7 @@ import xmltodict
 from tkinter import *
 import os
 import tkinter.messagebox
+from urllib.request import urlopen
 Root = Tk()
 Root['background'] = '#ffc917'
 
@@ -160,11 +161,9 @@ def actuele_vertrek_informatie():
                                                                                      wijziging(info))+'\nq')
 
 #            eindtext+="Dit is een test versie! Let op!: Dit is alleen maar een testq"
-        global regels
         regels = eindtext.split('q')
         eindoutput(regels)
-
-        return True
+        return regels
     except KeyError:
         return False
 
@@ -181,12 +180,13 @@ def eindoutput(regels):
     posy = 260
 
     for regel in regels:
-        tabel = Label(Root, text=regel, justify=LEFT, anchor='nw', width=35, height=2, font=("",8,"bold"), fg="#003082")
+        tabel = Label(Root, text=regel, justify=LEFT, anchor='nw', width=35, height=2, font=("", 8, "bold"),
+                      fg="#003082")
         if "Let op" in regel:
             splitting = regel.split('Let op!:')
 
-            tabel = Label(Root, text=(splitting[0]), justify=LEFT, anchor='nw', width=35, height=2, font=("",8,"bold"),
-                          fg="#003082")
+            tabel = Label(Root, text=(splitting[0]), justify=LEFT, anchor='nw', width=35, height=2,
+                          font=("", 8, "bold"), fg="#003082")
             button = tkinter.Button(Root, image=photo, command=lambda text=splitting[1]: on_click(text))
             button.place(x=posx + 220, y=posy + 5)
             Tabellen.append(button)
@@ -216,7 +216,8 @@ def nederlands():
 #NSlabel = Label(Root, image=NSlogo, borderwidth=0, height=140, width=340)
 #NSlabel.place(x=1000, y=30)
 searching()
-photo = PhotoImage(file="C:\\Users\\Diana\\Pictures\\OpmerkingenKnop.png")
+image_url = "https://orig00.deviantart.net/f92d/f/2018/306/2/6/opmerkingenknop_by_xxdragonsartxx-dcr02rh.png"
+photo = PhotoImage(data=urlopen(image_url).read())
 Label(Root, bg="#ffc917", text="Zoek uw station:").place(x=510, y=175)
 blue = Label(Root, background="#003082", height=3)
 blue.pack(side=BOTTOM, fill="x")
@@ -227,7 +228,6 @@ Error = Label(Root, text="Geef een geldige stationsnaam op!", font=("", 55, "bol
 MainMenu = Button(Root, command=nederlands, text="Terug", bg="#003082", fg="white", width=20, height=4, anchor="w",
                   borderwidth=0, font=("", 9, "bold"))
 MainMenu.place(x=10, y=10)
-
 Root.overrideredirect(True)
 Root.geometry("{0}x{1}+0+0".format(Root.winfo_screenwidth(), Root.winfo_screenheight()))
 Root.bind("<Escape>", lambda e: e.widget.quit())

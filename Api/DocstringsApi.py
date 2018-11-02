@@ -12,7 +12,7 @@ def treintijden():
     response = requests.get(api_url, auth=auth_details)
     with open('vertrektijden.xml', 'w') as myXMLFile:
         myXMLFile.write(response.text)
-help(treintijden)
+
 
 def processXML(filename):
     """Vertrektijden.xml wordt uitgelezen
@@ -21,7 +21,7 @@ def processXML(filename):
         filestring= myXMLFile.read()
         xmldictionary= xmltodict.parse(filestring)
         return xmldictionary
-help(processXML)
+
 
 def Tijd(info):
     """De informatie die over de vertrektijd gaat wordt uit de dictionairy gehaald
@@ -30,7 +30,7 @@ def Tijd(info):
     tijd = (info['VertrekTijd']).split('T')
     TijdNet = tijd[1].split('+')
     return TijdNet
-help(Tijd)
+
 
 def Bestemming(info):
     """De waarde van de eindbestemming word uit de dictionairy gehaald en aan een variabele toegekend.
@@ -41,7 +41,7 @@ def Bestemming(info):
     else:
         Bestemming="'Eindbestemming onbekent'"
     return Bestemming
-help(Bestemming)
+
 
 def Spoor(info):
     """De waarde van het vertrekspoor word uit de dictionairy gehaald en aan een variabele toegekend
@@ -52,7 +52,7 @@ def Spoor(info):
     except KeyError:
         Spoor="'Onbekend'"
     return Spoor
-help(Spoor)
+
 
 def Trein(info):
     """De waarde van de treinsoort word uit de dictionairy gehaald en aan een variabele toegekend, zolang deze niet leeg is.
@@ -63,7 +63,7 @@ def Trein(info):
     else:
         Trein="trein"
     return Trein
-help(Trein)
+
 
 def Vertraging(info):
     """De waarde van het vertraging word uit de dictionairy gehaald en aan een variabele toegekend
@@ -75,7 +75,7 @@ def Vertraging(info):
     except KeyError:
         Vertraging= ""
     return Vertraging
-help(Vertraging)
+
 
 def Wijziging(info):
     """De waarde van de wijzigingen word uit de dictionairy gehaald en aan een variabele toegekend
@@ -87,7 +87,7 @@ def Wijziging(info):
     except KeyError:
         Wijziging = ""
     return Wijziging
-help(Wijziging)
+
 
 def ActueleVertrekInformatie():
     """Zet alle gevraagde informatie netjes achter elkaar
@@ -108,6 +108,6 @@ def ActueleVertrekInformatie():
             print(EindText)
     except KeyError:
         print("Geef een geldige stations naam")
-help(ActueleVertrekInformatie)
+
 
 ActueleVertrekInformatie()

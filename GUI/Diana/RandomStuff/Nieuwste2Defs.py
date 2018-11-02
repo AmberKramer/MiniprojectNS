@@ -3,7 +3,6 @@ import xmltodict
 from tkinter import *
 import os
 import tkinter.messagebox
-
 Root = Tk()
 Root['background'] = '#ffc917'
 
@@ -93,9 +92,13 @@ def trein(info):
 
 
 def vertraging(info):
-    """Deze def geeft de vertragingen aan van treinen die last hebben van een vertraging
+    """Deze def geeft de vertragingen weer van treinen die last hebben van een vertraging
     en returned de tijd als er vertraging is.
-    Als er geen vertraging is wordt dit opgevangen in de except KeyError"""
+    Als er geen vertraging is wordt dit opgevangen in de except KeyError
+    >>> vertraging ({'VertrekVertragingTekst': '+5 min'})
+    ' +5 min'
+    """
+
     try:
         vertragingstijd = " " + info['VertrekVertragingTekst']
     except KeyError:
@@ -105,8 +108,15 @@ def vertraging(info):
 
 def wijziging(info):
     """Deze def geeft aan of er meldingen zijn bijvoorbeeld: trein rijd niet of niet verder dan een bepaald punt,
-    als er een extra trein wordt ingezet, of als er een storing is(bijv. sein of wissel storing).
-    Als er geen opmerkingen zijn dan wordt dit opgevangen in de except KeyError."""
+    als er een extra trein wordt ingezet, of als er een storing is(bijv. sein of wissel storing), etc.
+    Als er geen opmerkingen zijn dan wordt dit opgevangen in de except KeyError.
+    >>> wijziging({'Opmerkingen': {'Opmerking': 'Trein rijdt niet'}})
+    'Let op!: Trein rijdt niet'
+    >>> wijziging({'Opmerkingen': {'Opmerking': 'Niet instappen'}})
+    'Let op!: Niet instappen'
+    >>> wijziging({'Opmerkingen': {'Opmerking': 'Extra trein'}})
+    'Let op!: Extra trein'
+    """
     try:
         wijzigingen = "Let op!: " + info['Opmerkingen']['Opmerking']
     except KeyError:
@@ -147,9 +157,9 @@ def actuele_vertrek_informatie():
             eindtext += ("De {} naar {} \nvertrekt om {}{} vanaf spoor {} {}".format(trein(info), bestemming(info),
                                                                                      ((tijd(info))[0])[0:5],
                                                                                      vertraging(info), spoor(info),
-                                                                                     wijziging(info)) + '\nq')
+                                                                                     wijziging(info))+'\nq')
 
-        #            eindtext+="Dit is een test versie! Let op!: Dit is alleen maar een testq"
+#            eindtext+="Dit is een test versie! Let op!: Dit is alleen maar een testq"
         global regels
         regels = eindtext.split('q')
         eindoutput(regels)
@@ -171,11 +181,12 @@ def eindoutput(regels):
     posy = 260
 
     for regel in regels:
-        tabel = Label(Root, text=regel, justify=LEFT, anchor='nw', width=35, height=2)
+        tabel = Label(Root, text=regel, justify=LEFT, anchor='nw', width=35, height=2, font=("",8,"bold"), fg="#003082")
         if "Let op" in regel:
             splitting = regel.split('Let op!:')
 
-            tabel = Label(Root, text=(splitting[0]), justify=LEFT, anchor='nw', width=35, height=2)
+            tabel = Label(Root, text=(splitting[0]), justify=LEFT, anchor='nw', width=35, height=2, font=("",8,"bold"),
+                          fg="#003082")
             button = tkinter.Button(Root, image=photo, command=lambda text=splitting[1]: on_click(text))
             button.place(x=posx + 220, y=posy + 5)
             Tabellen.append(button)
@@ -201,9 +212,9 @@ def nederlands():
     Root.destroy()
 
 
-# NSlogo = PhotoImage(file="C:\\Users\\gfjan\Pictures\\NSlogo.png")
-# NSlabel = Label(Root, image=NSlogo, borderwidth=0, height=140, width=340)
-# NSlabel.place(x=1000, y=30)
+#NSlogo = PhotoImage(file="C:\\Users\\gfjan\Pictures\\NSlogo.png")
+#NSlabel = Label(Root, image=NSlogo, borderwidth=0, height=140, width=340)
+#NSlabel.place(x=1000, y=30)
 searching()
 photo = PhotoImage(file="C:\\Users\\Diana\\Pictures\\OpmerkingenKnop.png")
 Label(Root, bg="#ffc917", text="Zoek uw station:").place(x=510, y=175)

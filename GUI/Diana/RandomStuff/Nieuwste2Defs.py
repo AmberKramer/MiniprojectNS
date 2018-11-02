@@ -6,6 +6,15 @@ import tkinter.messagebox
 Root = Tk()
 Root['background'] = '#ffc917'
 
+def searchbar():
+    Search = Button(Root, background="#003082", fg="white", text="Zoeken", command=lambda: treintijden(SearchBar.get()))
+    Search.place(x=815, y=202)
+
+    SearchBar = Entry(Root, font=("Calibri", 18))
+    SearchBar.place(x=510, y=200, height=30, width=300)
+    SearchBar.bind("<Return>", lambda event: treintijden(SearchBar.get()))
+searchbar()
+
 
 def treintijden(input):
     label = Label(Root, text="Zoekresultaten voor station: " + input, width=70, bg="#ffc917")
@@ -155,13 +164,6 @@ Error = Label(Root, text="Geef een geldige stationsnaam op!", font=("", 55, "bol
 MainMenu = Button(Root, command=Nederlands, text="Terug", bg="#003082", fg="white", width=20, height=4, anchor="w",
                   borderwidth=0, font=("", 9, "bold"))
 MainMenu.place(x=10, y=10)
-
-Search = Button(Root, background="#003082", fg="white", text="Zoeken", command=lambda: treintijden(SearchBar.get()))
-Search.place(x=815, y=202)
-
-SearchBar = Entry(Root, font=("Calibri", 18))
-SearchBar.place(x=510, y=200, height=30, width=300)
-SearchBar.bind("<Return>", lambda event: treintijden(SearchBar.get()))
 
 Root.overrideredirect(True)
 Root.geometry("{0}x{1}+0+0".format(Root.winfo_screenwidth(), Root.winfo_screenheight()))

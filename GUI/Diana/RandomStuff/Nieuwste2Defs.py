@@ -16,11 +16,11 @@ def searchbar():
 searchbar()
 
 
-def treintijden(input):
-    label = Label(Root, text="Zoekresultaten voor station: " + input, width=70, bg="#ffc917")
+def treintijden(invoer):
+    label = Label(Root, text="Zoekresultaten voor station: " + invoer, width=70, bg="#ffc917")
     label.place(x=368, y=230)
     auth_details = ('amber.kramer@student.hu.nl', 'vKHIYFtiDBbycMlRcAUsdstrme5Bo4iL76YTBJivyKkio-XWM6QiQA')
-    api_url = ('http://webservices.ns.nl/ns-api-avt?station=' + input)
+    api_url = ('http://webservices.ns.nl/ns-api-avt?station=' + invoer)
     response = requests.get(api_url, auth=auth_details)
     with open('vertrektijden.xml', 'w') as myXMLFile:
         myXMLFile.write(response.text)

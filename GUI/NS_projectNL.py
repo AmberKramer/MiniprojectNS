@@ -1,3 +1,4 @@
+from urllib.request import urlopen
 from tkinter import *
 import os
 import webbrowser
@@ -11,15 +12,9 @@ def pin_url():
     webbrowser.open_new(r"https://www.pin.nl/consument/historie-pinnen/")
 
 
-help(pin_url)
-
-
 def maestro_url():
     """verwijst naar de website van www.maestro.nl"""
     webbrowser.open_new(r"https://www.mastercard.nl/nl-nl/consumers/find-card-products/debit-cards.html")
-
-
-help(maestro_url)
 
 
 def startmenu():
@@ -28,25 +23,16 @@ def startmenu():
     Root.destroy()
 
 
-help(startmenu)
-
-
 def stationtab():
     """met deze def wordt de gebruiker door gestuurd naar het scherm om een station te zoeken"""
     os.system('py NS_StationTab.py')
     Root.destroy()
 
 
-help(stationtab)
-
-
 def english():
     """deze def verwijst naar de engelse pagina van het systeem"""
     os.system('py NS_project.py')
     Root.destroy()
-
-
-help(english)
 
 
 def foutpagina():
@@ -56,12 +42,16 @@ def foutpagina():
     Root.destroy()
 
 
-help(foutpagina)
-NL = PhotoImage(file="C:\\Users\\gfjan\\Pictures\\NLFlag.png")
-UK = PhotoImage(file="C:\\Users\\gfjan\\Pictures\\UKFlag.png")
-PinFoto = PhotoImage(file="C:\\Users\\gfjan\Pictures\\pin.png")
-MaestroFoto = PhotoImage(file="C:\\Users\\gfjan\Pictures\\Maestro.png")
-NSlogo = PhotoImage(file="C:\\Users\\gfjan\Pictures\\NSlogo.png")
+NL = "https://orig00.deviantart.net/ebb8/f/2018/306/8/f/nlflag_by_xxdragonsartxx-dcr03na.gif"
+NL_picture = PhotoImage(data=urlopen(NL).read())
+UK = "https://orig00.deviantart.net/3403/f/2018/306/b/1/ukflag_by_xxdragonsartxx-dcr03mm.png"
+UK_picture = PhotoImage(data=urlopen(UK).read())
+PinFoto="https://orig00.deviantart.net/5396/f/2018/306/c/0/pin_by_xxdragonsartxx-dcr03mw.png"
+Pin_picture = PhotoImage(data=urlopen(PinFoto).read())
+MaestroFoto="https://orig00.deviantart.net/b2d3/f/2018/306/4/f/maestro_by_xxdragonsartxx-dcr03nd.png"
+Maestro_picture = PhotoImage(data=urlopen(MaestroFoto).read())
+NSlogo="https://orig00.deviantart.net/0517/f/2018/306/1/e/nslogo_by_xxdragonsartxx-dcr03n1.png"
+NSpicture = PhotoImage(data=urlopen(NSlogo).read())
 
 blue = Label(Root, background="#003082", height=3)
 blue.pack(side=BOTTOM, fill="x")
@@ -80,13 +70,13 @@ Overig = Button(Root, command=foutpagina, text="Overige tickets", bg="#003082", 
                 anchor="w", borderwidth=0, font=("", 9, "bold"))
 Via_Station = Button(Root, command=stationtab, text="'Via' Station", bg="#003082", fg="white", width=20, height=3,
                      anchor="w", borderwidth=0, font=("", 9, "bold"))
-Nederlands = Button(Root, text="Nederlands", image=NL, fg="white", width=45, height=25, borderwidth=1.5)
-English = Button(Root, command=english, text="English", image=UK, fg="white", width=45, height=25,
+Nederlands = Button(Root, text="Nederlands", fg="white", width=45, height=25, borderwidth=1.5, image=NL_picture)
+English = Button(Root, command=english, text="English", image=UK_picture, fg="white", width=45, height=25,
                  borderwidth=1.5)
 Stop = Button(Root, command=startmenu, text="Stoppen\nAlles wissen", justify=LEFT, bg="#fe0000", fg="white",
               width=20, height=2, anchor="w", borderwidth=0, font=("", 9, "bold"))
-Pinnen = Button(Root, command=pin_url, image=PinFoto, width=190, height=120, borderwidth=0)
-Maestro = Button(Root, command=maestro_url, image=MaestroFoto, width=190, height=120, borderwidth=0)
+Pinnen = Button(Root, command=pin_url, image=Pin_picture, width=190, height=120, borderwidth=0)
+Maestro = Button(Root, command=maestro_url, image=Maestro_picture, width=190, height=120, borderwidth=0)
 
 Enkele_Reis.place(x=5, y=5)
 Dag_Retour.place(x=5, y=80)
@@ -104,11 +94,12 @@ Maestro.place(x=1170, y=300)
 Pinnen.bind("<Button-1>")
 Maestro.bind("<Button-1>")
 
+
 NLlabel = Label(Root, text="Nederlands", bg="#003082", fg="white", borderwidth=0, font=("", 8, "bold"))
 NLlabel.place(x=11, y=751)
 UKlabel = Label(Root, text="English", bg="#003082", fg="white", borderwidth=0, font=("", 8, "bold"))
 UKlabel.place(x=103, y=751)
-NSlabel = Label(Root, image=NSlogo, borderwidth=0, height=140, width=340)
+NSlabel = Label(Root, image=NSpicture, borderwidth=0, height=140, width=340)
 NSlabel.place(x=480, y=260)
 
 Root.overrideredirect(True)

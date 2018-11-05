@@ -82,5 +82,3 @@ ent.bind("<Return>", (lambda event: reply(ent.get())))
 Root.overrideredirect(True)
 Root.geometry("{0}x{1}+0+0".format(Root.winfo_screenwidth(), Root.winfo_screenheight()))
 Root.bind("<Escape>", lambda e: e.widget.quit())
-
-Root.mainloop()

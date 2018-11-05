@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ 
+
+<ActueleVertrekTijden>
+
+	<VertrekkendeTrein>
+		<RitNummer>23403</RitNummer>
+		<VertrekTijd>2018-11-03T01:54:00+0100</VertrekTijd>
+		
+		
+		<EindBestemming>Nijmegen</EindBestemming>
+		<TreinSoort>Intercity</TreinSoort>
+		
+			<RouteTekst>Ede-Wageningen, Arnhem C.</RouteTekst>
+		
+		
+			<Vervoerder>NS</Vervoerder>
+		
+		<VertrekSpoor wijziging="false">18</VertrekSpoor>
+		
+		
+	</VertrekkendeTrein>
+
+	<VertrekkendeTrein>
+		<RitNummer>22401</RitNummer>
+		<VertrekTijd>2018-11-03T02:00:00+0100</VertrekTijd>
+		
+		
+		<EindBestemming>Amersfoort</EindBestemming>
+		<TreinSoort>Intercity</TreinSoort>
+		
+		
+			<Vervoerder>NS</Vervoerder>
+		
+		<VertrekSpoor wijziging="false">11</VertrekSpoor>
+		
+		
+	</VertrekkendeTrein>
+
+	<VertrekkendeTrein>
+		<RitNummer>1409</RitNummer>
+		<VertrekTijd>2018-11-03T02:17:00+0100</VertrekTijd>
+		
+		
+		<EindBestemming>Rotterdam Centraal</EindBestemming>
+		<TreinSoort>Intercity</TreinSoort>
+		
+			<RouteTekst>Amsterdam C., Schiphol Airport, Leiden C.</RouteTekst>
+		
+		
+			<Vervoerder>NS</Vervoerder>
+		
+		<VertrekSpoor wijziging="false">14</VertrekSpoor>
+		
+		
+	</VertrekkendeTrein>
+
+	<VertrekkendeTrein>
+		<RitNummer>22405</RitNummer>
+		<VertrekTijd>2018-11-03T03:05:00+0100</VertrekTijd>
+		
+		
+		<EindBestemming>Amersfoort</EindBestemming>
+		<TreinSoort>Intercity</TreinSoort>
+		
+		
+			<Vervoerder>NS</Vervoerder>
+		
+		<VertrekSpoor wijziging="false">11</VertrekSpoor>
+		
+		
+	</VertrekkendeTrein>
+
+	<VertrekkendeTrein>
+		<RitNummer>1413</RitNummer>
+		<VertrekTijd>2018-11-03T03:17:00+0100</VertrekTijd>
+		
+		
+		<EindBestemming>Rotterdam Centraal</EindBestemming>
+		<TreinSoort>Intercity</TreinSoort>
+		
+			<RouteTekst>Amsterdam C., Schiphol Airport, Leiden C.</RouteTekst>
+		
+		
+			<Vervoerder>NS</Vervoerder>
+		
+		<VertrekSpoor wijziging="false">18</VertrekSpoor>
+		
+		
+	</VertrekkendeTrein>
+
+	<VertrekkendeTrein>
+		<RitNummer>1417</RitNummer>
+		<VertrekTijd>2018-11-03T04:17:00+0100</VertrekTijd>
+		
+		
+		<EindBestemming>Rotterdam Centraal</EindBestemming>
+		<TreinSoort>Intercity</TreinSoort>
+		
+			<RouteTekst>Amsterdam C., Schiphol Airport, Leiden C.</RouteTekst>
+		
+		
+			<Vervoerder>NS</Vervoerder>
+		
+		<VertrekSpoor wijziging="false">14</VertrekSpoor>
+		
+		
+	</VertrekkendeTrein>
+
+	<VertrekkendeTrein>
+		<RitNummer>981974</RitNummer>
+		<VertrekTijd>2018-11-03T04:57:00+0100</VertrekTijd>
+		
+		
+		<EindBestemming>Utrecht Overvecht</EindBestemming>
+		<TreinSoort>Stopbus i.p.v. trein</TreinSoort>
+		
+		
+			<Vervoerder>NS</Vervoerder>
+		
+		<VertrekSpoor wijziging="false"></VertrekSpoor>
+		
+		
+	</VertrekkendeTrein>
+
+	<VertrekkendeTrein>
+		<RitNummer>7408</RitNummer>
+		<VertrekTijd>2018-11-03T05:17:00+0100</VertrekTijd>
+		
+		
+		<EindBestemming>Amsterdam Centraal</EindBestemming>
+		<TreinSoort>Sprinter</TreinSoort>
+		
+			<RouteTekst>Breukelen, Bijlmer ArenA, Duivendrecht</RouteTekst>
+		
+		
+			<Vervoerder>NS</Vervoerder>
+		
+		<VertrekSpoor wijziging="false">14</VertrekSpoor>
+		
+		
+	</VertrekkendeTrein>
+
+	<VertrekkendeTrein>
+		<RitNummer>981975</RitNummer>
+		<VertrekTijd>2018-11-03T05:27:00+0100</VertrekTijd>
+		
+		
+		<EindBestemming>Utrecht Overvecht</EindBestemming>
+		<TreinSoort>Stopbus i.p.v. trein</TreinSoort>
+		
+		
+			<Vervoerder>NS</Vervoerder>
+		
+		<VertrekSpoor wijziging="false"></VertrekSpoor>
+		
+		
+	</VertrekkendeTrein>
+
+	<VertrekkendeTrein>
+		<RitNummer>981976</RitNummer>
+		<VertrekTijd>2018-11-03T05:57:00+0100</VertrekTijd>
+		
+		
+		<EindBestemming>Utrecht Overvecht</EindBestemming>
+		<TreinSoort>Stopbus i.p.v. trein</TreinSoort>
+		
+		
+			<Vervoerder>NS</Vervoerder>
+		
+		<VertrekSpoor wijziging="false"></VertrekSpoor>
+		
+		
+	</VertrekkendeTrein>
+
+</ActueleVertrekTijden>
